@@ -11,7 +11,7 @@ public class OrderModalOneForWhom {
     public OrderModalOneForWhom(WebDriver driver) {
         this.driver = driver; // Инициализировали в нём поле driver
     }
-        //Поле "Имя" арендатора
+    //Поле "Имя" арендатора
     private final By nameResponsibleField = By.xpath(".//div[1]/input");
     //Поле "Фамилия" арендатора
     private final By surnameResponsibleField = By.xpath(".//div[2]/input");

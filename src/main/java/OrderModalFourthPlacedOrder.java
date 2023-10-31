@@ -15,7 +15,7 @@ public class OrderModalFourthPlacedOrder {
     private final By orderPlaced = By.className("Order_ModalHeader__3FDaJ");
 
     //Забираем текст из модала
-    public String emailInHeader() {
+    public String getHeaderText() {
         return driver.findElement(orderPlaced).getText();
     }
 

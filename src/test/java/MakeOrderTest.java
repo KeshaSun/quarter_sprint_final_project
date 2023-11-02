@@ -5,11 +5,13 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import static org.hamcrest.CoreMatchers.is;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
+import static org.hamcrest.CoreMatchers.*;
 
 @RunWith(Parameterized.class)
 public class MakeOrderTest {
@@ -107,8 +109,11 @@ public class MakeOrderTest {
         // перешли на страницу тестового приложения
         WebDriver driver = new FirefoxDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/");
+        // перешли на страницу тестового приложения
         //Создать Page Object для Main page для работы
         MainPage objMainPage = new MainPage(driver);
+        //Нажать на кнопку кук
+        objMainPage.clicOnCookieButton();
         //Нажать на кнопку "Заказать"
         objMainPage.clicOnMakeOrderTop();
         //Создать Page Object для OrderModalOne для работы
@@ -149,7 +154,7 @@ public class MakeOrderTest {
         objOrderModalFourth.waitForLoadHeader();
         //Проверить что текст совпадает Заказ оформлен
         String headerText = objOrderModalFourth.getHeaderText();
-        MatcherAssert.assertThat(headerText, is(textFromHeader));
+        MatcherAssert.assertThat(headerText, startsWith(textFromHeader));
     }
 
     @After

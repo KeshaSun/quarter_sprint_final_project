@@ -47,9 +47,11 @@ public class MakeOrderTestChrome {
    }
     @Test
     public void MakeOrderChromeTopOrderButton() {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+
         //Создать Page Object для Main page для работы
         MainPage objMainPage = new MainPage(driver);
+        //открыть страницу
+        objMainPage.openPage();
         //Нажать на кнопку кук
         objMainPage.clicOnCookieButton();
         //Нажать на кнопку "Заказать"
@@ -97,9 +99,11 @@ public class MakeOrderTestChrome {
 
     @Test
     public void MakeOrderChromeBotOrderButton() {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+
         //Создать Page Object для Main page для работы
         MainPage objMainPage = new MainPage(driver);
+        //открыть страницу
+        objMainPage.openPage();
         //Нажать на кнопку кук
         objMainPage.clicOnCookieButton();
         //Нажать на кнопку "Заказать"

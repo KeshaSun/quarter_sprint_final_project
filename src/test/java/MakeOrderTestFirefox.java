@@ -46,10 +46,11 @@ public class MakeOrderTestFirefox {
   }
     @Test
     public void MakeOrderFirefoxTopOrderButton() {
-        // перешли на страницу тестового приложения
-        driver.get("https://qa-scooter.praktikum-services.ru/");
         //Создать Page Object для Main page для работы
+
         MainPage objMainPage = new MainPage(driver);
+        //открыть страницу
+        objMainPage.openPage();
         //Нажать на кнопку кук
         objMainPage.clicOnCookieButton();
         //Нажать на кнопку "Заказать"
@@ -97,10 +98,10 @@ public class MakeOrderTestFirefox {
 
     @Test
     public void MakeOrderFirefoxBotOrderButton() {
-        // перешли на страницу тестового приложения
-        driver.get("https://qa-scooter.praktikum-services.ru/");
         //Создать Page Object для Main page для работы
         MainPage objMainPage = new MainPage(driver);
+        //открыть страницу
+        objMainPage.openPage();
         //Нажать на кнопку кук
         objMainPage.clicOnCookieButton();
         //Нажать на кнопку "Заказать"

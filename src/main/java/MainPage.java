@@ -11,6 +11,9 @@ public class MainPage {
     public MainPage(WebDriver driver) {
         this.driver = driver; // Инициализировали в нём поле driver
     }
+    // страница
+    private final String URL ="https://qa-scooter.praktikum-services.ru/";
+
     // Кнопка "Заказать" №1 в шапке
     private final By makeOrderTop = By.cssSelector(".Button_Button__ra12g");
     // Кнопка "Заказать" №2 в блоке "Как это работат"
@@ -34,6 +37,11 @@ public class MainPage {
     private final By SeventhImportantQuestion = By.id("accordion__heading-30");
     //Вопрос о важном 8
     private final By EighthImportantQuestion = By.id("accordion__heading-31");
+
+    //Открыть страницу
+    public void openPage(){
+        driver.get(URL);
+    }
 
     // Метод клика по кнопке "Заказать' №1 в шапке
     public void clicOnMakeOrderTop() {

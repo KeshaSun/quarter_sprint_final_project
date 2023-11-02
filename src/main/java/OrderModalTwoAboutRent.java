@@ -16,7 +16,7 @@ public class OrderModalTwoAboutRent {
     //Поле "Срок Аренды"
     private final By rentalPeriod = By.className("Dropdown-placeholder");
     //Кнопка "Заказать"
-    private final By makeOrderButton = By.xpath("//div[2]/div[3]/button[2]");
+    private final By makeOrderButton = By.xpath(".//div[2]/div[3]/button[2]");
 
     //Заполнить поле "Куда привезти самокат"
     public void setWhenBringScooter(String data) {
@@ -25,7 +25,7 @@ public class OrderModalTwoAboutRent {
     //Заполнить поле "Срок Аренды"
     public void setRentalPeriod() {
             driver.findElement(rentalPeriod).click();
-            driver.findElement(By.xpath("//div[1][@class = 'Dropdown-option']")).click();
+            driver.findElement(By.xpath(".//div[1][@class = 'Dropdown-option']")).click();
     }
     //Нажать на кнопку "Заказать"
     public void clicOnMakeOrderButton() {

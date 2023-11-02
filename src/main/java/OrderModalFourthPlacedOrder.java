@@ -14,6 +14,9 @@ public class OrderModalFourthPlacedOrder {
     //Надпись в моделе "Заказ оформлен"
     private final By orderPlaced = By.className("Order_ModalHeader__3FDaJ");
 
+    //Ждём пока появится кнопка статус
+    private final By statusButton = By.xpath(".//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM' and text() = 'Посмотреть статус']");
+
     //Забираем текст из модала
     public String getHeaderText() {
         return driver.findElement(orderPlaced).getText();
@@ -22,7 +25,7 @@ public class OrderModalFourthPlacedOrder {
     //Ожидание модала "Заказ оформлен"
     public void waitForLoadHeader() {
         new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOfElementLocated(orderPlaced));
+                .until(ExpectedConditions.visibilityOfElementLocated(statusButton));
     }
 
 }

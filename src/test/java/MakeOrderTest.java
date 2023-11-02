@@ -1,4 +1,6 @@
 import org.hamcrest.MatcherAssert;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,18 +16,16 @@ public class MakeOrderTest {
     private final String name;
     private final String surname;
     private final String address;
-    private final String metroName;
     private final String telephone;
     private final String data;
     private final String textFromHeader;
     private WebDriver driver;
 
-    public MakeOrderTest(String name, String surname, String address, String metroName, String telephone,
+    public MakeOrderTest(String name, String surname, String address, String telephone,
                          String data, String textFromHeader ) {
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.metroName = metroName;
         this.telephone = telephone;
         this.data = data;
         this.textFromHeader = textFromHeader;
@@ -35,21 +35,27 @@ public class MakeOrderTest {
 
         public static Object[][] getSumData() {
             return new Object[][] {
-                    { "Иван", "Иванов", "ул. Ленина д.5","Бульвар Рокоссовского","+79999999999","01.11.2023","Заказ оформлен"},
-                    { "Петр", "Петров", "ул. Тленина д.5","Черкизовская","+79999999999","01.11.2023","Заказ оформлен"},
+                    { "Иван", "Иванов", "ул. Ленина д.5","+79999999999","01.11.2023","Заказ оформлен"},
+                    { "Петр", "Петров", "ул. Тленина д.5","+79999999999","01.11.2023","Заказ оформлен"},
             };
         }
+   // @Before
+    //public void setUp() {
 
+    //}
     @Test
     public void MakeOrderChrome() {
         // создали драйвер для браузера Chrome
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new ChromeDriver(options);
-        // перешли на страницу тестового приложения
+        //ChromeOptions options = new ChromeOptions();
+        //options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
+        //driver = new ChromeDriver(options);
+        WebDriver driver = new ChromeDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/");
+        // перешли на страницу тестового приложения
         //Создать Page Object для Main page для работы
         MainPage objMainPage = new MainPage(driver);
+        //Нажать на кнопку кук
+        objMainPage.clicOnCookieButton();
         //Нажать на кнопку "Заказать"
         objMainPage.clicOnMakeOrderTop();
         //Создать Page Object для OrderModalOne для работы
@@ -63,7 +69,7 @@ public class MakeOrderTest {
         //Заполнить поле "* Адрес: куда привезти заказ"
         objOrderModalOne.setAddress(address);
         //Заполнить поле "* Станция метро"
-        objOrderModalOne.setMetroStation(metroName);
+        objOrderModalOne.setMetroStation();
         //Заполнить поле "* Телефон: на него позвонит курьер"
         objOrderModalOne.setTelephone(telephone);
         //Нажать на кнопку "Далее"
@@ -95,10 +101,11 @@ public class MakeOrderTest {
     @Test
     public void MakeOrderFirefox() {
         // создали драйвер для браузера Chrome
-        FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        driver = new FirefoxDriver(options);
+        //FirefoxOptions options = new FirefoxOptions();
+        //options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
+        //driver = new FirefoxDriver(options);
         // перешли на страницу тестового приложения
+        WebDriver driver = new FirefoxDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/");
         //Создать Page Object для Main page для работы
         MainPage objMainPage = new MainPage(driver);
@@ -115,7 +122,7 @@ public class MakeOrderTest {
         //Заполнить поле "* Адрес: куда привезти заказ"
         objOrderModalOne.setAddress(address);
         //Заполнить поле "* Станция метро"
-        objOrderModalOne.setMetroStation(metroName);
+        objOrderModalOne.setMetroStation();
         //Заполнить поле "* Телефон: на него позвонит курьер"
         objOrderModalOne.setTelephone(telephone);
         //Нажать на кнопку "Далее"
@@ -144,4 +151,11 @@ public class MakeOrderTest {
         String headerText = objOrderModalFourth.getHeaderText();
         MatcherAssert.assertThat(headerText, is(textFromHeader));
     }
+
+    @After
+    public void teardown() {
+        // Закрой браузер
+        driver.quit();
+    }
+
 }

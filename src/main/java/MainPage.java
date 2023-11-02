@@ -1,7 +1,5 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class MainPage {
@@ -13,11 +11,13 @@ public class MainPage {
     public MainPage(WebDriver driver) {
         this.driver = driver; // Инициализировали в нём поле driver
     }
-
-    // Кнопка "Заказать' №1 в шапке
+    // Кнопка "Заказать" №1 в шапке
     private final By makeOrderTop = By.cssSelector(".Button_Button__ra12g");
     // Кнопка "Заказать" №2 в блоке "Как это работат"
     private final By makeOrderBot = By.cssSelector(".Home_FinishButton__1_cWm");
+
+    private final By cookieButton = By.className("App_CookieButton__3cvqF");
+
     //Вопрос о важном 1
     private final By firstImportantQuestion = By.id("accordion__heading-24");
     //Вопрос о важном 2
@@ -42,5 +42,9 @@ public class MainPage {
     // Метод клика по кнопке "Заказать' №2 в шапке
         public void clicOnMakeOrderBot() {
             driver.findElement(makeOrderBot).click();
+    }
+    //Нажать на куку чтобы не мешала
+    public void clicOnCookieButton() {
+        driver.findElement(cookieButton).click();
     }
 }

@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,7 +20,7 @@ public class OrderModalTwoAboutRent {
 
     //Заполнить поле "Куда привезти самокат"
     public void setWhenBringScooter(String data) {
-        driver.findElement(whenBringScooter).sendKeys(data);
+        driver.findElement(whenBringScooter).sendKeys(data, Keys.ENTER);
     }
     //Заполнить поле "Срок Аренды"
     public void setRentalPeriod() {

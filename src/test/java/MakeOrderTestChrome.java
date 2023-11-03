@@ -46,7 +46,7 @@ public class MakeOrderTestChrome {
 
    }
     @Test
-    public void MakeOrderChromeTopOrderButton() {
+    public void MakeOrderChromeOrderButton() {
 
         //Создать Page Object для Main page для работы
         MainPage objMainPage = new MainPage(driver);
@@ -104,6 +104,8 @@ public class MakeOrderTestChrome {
         String headerText = objOrderModalFourth.getHeaderText();
         MatcherAssert.assertThat(headerText, containsString(textFromHeader));
     }
+
+    @Test
 
    @After
    public void tearDown() {

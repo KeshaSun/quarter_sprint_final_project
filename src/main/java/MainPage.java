@@ -34,9 +34,9 @@ public class MainPage {
     //Вопрос о важном 6
     private final By sixthImportantQuestion = By.id("accordion__heading-29");
     //Вопрос о важном 7
-    private final By SeventhImportantQuestion = By.id("accordion__heading-30");
+    private final By seventhImportantQuestion = By.id("accordion__heading-30");
     //Вопрос о важном 8
-    private final By EighthImportantQuestion = By.id("accordion__heading-31");
+    private final By eighthImportantQuestion = By.id("accordion__heading-31");
 
     //Открыть страницу
     public void openPage(){

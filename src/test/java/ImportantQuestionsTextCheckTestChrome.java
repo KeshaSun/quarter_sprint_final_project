@@ -63,6 +63,8 @@ public class ImportantQuestionsTextCheckTestChrome {
 
     @Test
     public void ImportantQuestionsTextCheck() {
+        MainPage objMainPage = new MainPage(driver);
+
 
     }
 

@@ -1,21 +1,17 @@
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.security.PrivateKey;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(Parameterized.class)
-public class ImportantQuestionsTextCheckTestChrome {
+public class ImportantQuestionsTextCheckTestFirefox {
     private WebDriver driver;
     private final String firstAnswerText;
     private final String secondAnswerText;
@@ -26,7 +22,7 @@ public class ImportantQuestionsTextCheckTestChrome {
     private final String seventhAnswerText;
     private final String eighthAnswerText;
 
-    public ImportantQuestionsTextCheckTestChrome(
+    public ImportantQuestionsTextCheckTestFirefox(
             String firstAnswerText,
             String secondAnswerText,
             String thirdAnswerText,
@@ -63,9 +59,8 @@ public class ImportantQuestionsTextCheckTestChrome {
     }
     @Before
     public void setUp() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver();
+
+        driver = new FirefoxDriver();
     }
 
     @Test

@@ -1,5 +1,7 @@
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 
 public class MainPage {
@@ -11,8 +13,6 @@ public class MainPage {
     public MainPage(WebDriver driver) {
         this.driver = driver; // Инициализировали в нём поле driver
     }
-    // страница
-    private final String URL ="https://qa-scooter.praktikum-services.ru/";
 
     // Кнопка "Заказать" №1 в шапке
     private final By makeOrderTop = By.cssSelector(".Button_Button__ra12g");
@@ -21,8 +21,11 @@ public class MainPage {
 
     private final By cookieButton = By.className("App_CookieButton__3cvqF");
 
+    //Блок вопросов о важном;
+    private final By ImportantQuestion = By.xpath(".//div/div/div[5]/div[1][text()='Вопросы о важном']");
+
     //Вопрос о важном 1
-    private final By firstImportantQuestion = By.id("accordion__heading-0");
+    private final By firstImportantQuestion = By.xpath(".//*[@id='accordion__heading-0']");
     //Ответ о важном 1
     private final By firstImportantAnswer = By.id("accordion__panel-0");
 
@@ -63,6 +66,8 @@ public class MainPage {
 
     //Открыть страницу
     public void openPage(){
+        // страница
+        String URL = "https://qa-scooter.praktikum-services.ru/";
         driver.get(URL);
     }
 
@@ -71,7 +76,7 @@ public class MainPage {
         driver.findElement(makeOrderTop).click();
     }
     // Метод клика по кнопке "Заказать' №2 в шапке
-        public void clicOnMakeOrderBot() {
+    public void clicOnMakeOrderBot() {
             driver.findElement(makeOrderBot).click();
     }
     //Нажать на куку чтобы не мешала
@@ -79,13 +84,23 @@ public class MainPage {
         driver.findElement(cookieButton).click();
     }
 
+    //Скролл до блока вопросов о важном
+    public void scrollToImportantQuestion() {
+        WebElement element = driver.findElement(ImportantQuestion);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();",element);
+    }
+
     //Клик по кнопке вопросу №1
     public void clicFirstImportantQuestion() {
         driver.findElement(firstImportantQuestion).click();
     }
     //Проверка раскрытия ответа вопроса №1
-    public void checkAreaStatusFirstImportantQuestion() {
-        driver.findElement(firstImportantQuestion).getAttribute("aria-disabled");
+    public String checkAreaStatusFirstImportantQuestion() {
+      return driver.findElement(firstImportantQuestion).getAttribute("aria-disabled");
+    }
+    //Получить ответ на вопрос №1
+    public String getFirstImportantAnswerText() {
+        return driver.findElement(firstImportantAnswer).getText();
     }
 
     //Клик по кнопке вопросу №2
@@ -93,8 +108,12 @@ public class MainPage {
         driver.findElement(secondImportantQuestion).click();
     }
     //Проверка раскрытия ответа вопроса №2
-    public void checkAreaStatusSecondImportantQuestion() {
-        driver.findElement(secondImportantQuestion).getAttribute("aria-disabled");
+    public String checkAreaStatusSecondImportantQuestion() {
+       return driver.findElement(secondImportantQuestion).getAttribute("aria-disabled");
+    }
+    //Получить ответ на вопрос №2
+    public String getSecondImportantAnswerText() {
+        return driver.findElement(secondImportantAnswer).getText();
     }
 
     //Клик по кнопке вопросу №3
@@ -102,8 +121,12 @@ public class MainPage {
         driver.findElement(thirdImportantQuestion).click();
     }
     //Проверка раскрытия ответа вопроса №3
-    public void checkAreaStatusThirdImportantQuestion() {
-        driver.findElement(thirdImportantQuestion).getAttribute("aria-disabled");
+    public String checkAreaStatusThirdImportantQuestion() {
+       return driver.findElement(thirdImportantQuestion).getAttribute("aria-disabled");
+    }
+    //Получить ответ на вопрос №3
+    public String getThirdImportantAnswerText() {
+        return driver.findElement(thirdImportantAnswer).getText();
     }
 
     //Клик по кнопке вопросу №4
@@ -111,8 +134,12 @@ public class MainPage {
         driver.findElement(fourthImportantQuestion).click();
     }
     //Проверка раскрытия ответа вопроса №4
-    public void checkAreaStatusFourthImportantQuestion() {
-        driver.findElement(fourthImportantQuestion).getAttribute("aria-disabled");
+    public String checkAreaStatusFourthImportantQuestion() {
+       return driver.findElement(fourthImportantQuestion).getAttribute("aria-disabled");
+    }
+    //Получить ответ на вопрос №4
+    public String getFourthImportantAnswerText() {
+        return driver.findElement(fourthImportantAnswer).getText();
     }
 
     //Клик по кнопке вопросу №5
@@ -120,8 +147,12 @@ public class MainPage {
         driver.findElement(fifthImportantQuestion).click();
     }
     //Проверка раскрытия ответа вопроса №5
-    public void checkAreaStatusFifthImportantQuestion() {
-        driver.findElement(fifthImportantQuestion).getAttribute("aria-disabled");
+    public String checkAreaStatusFifthImportantQuestion() {
+       return driver.findElement(fifthImportantQuestion).getAttribute("aria-disabled");
+    }
+    //Получить ответ на вопрос №5
+    public String getFifthImportantAnswerText() {
+        return driver.findElement(fifthImportantAnswer).getText();
     }
 
     //Клик по кнопке вопросу №6
@@ -129,8 +160,12 @@ public class MainPage {
         driver.findElement(sixthImportantQuestion).click();
     }
     //Проверка раскрытия ответа вопроса №6
-    public void checkAreaStatusSixthImportantQuestion() {
-        driver.findElement(sixthImportantQuestion).getAttribute("aria-disabled");
+    public String checkAreaStatusSixthImportantQuestion() {
+       return driver.findElement(sixthImportantQuestion).getAttribute("aria-disabled");
+    }
+    //Получить ответ на вопрос №6
+    public String getSixthImportantAnswerText() {
+        return driver.findElement(sixthImportantAnswer).getText();
     }
 
     //Клик по кнопке вопросу №7
@@ -138,8 +173,12 @@ public class MainPage {
         driver.findElement(seventhImportantQuestion).click();
     }
     //Проверка раскрытия ответа вопроса №7
-    public void checkAreaStatusSeventhImportantQuestion() {
-        driver.findElement(seventhImportantQuestion).getAttribute("aria-disabled");
+    public String checkAreaStatusSeventhImportantQuestion() {
+       return driver.findElement(seventhImportantQuestion).getAttribute("aria-disabled");
+    }
+    //Получить ответ на вопрос №7
+    public String getSeventhImportantAnswerText() {
+        return driver.findElement(seventhImportantAnswer).getText();
     }
 
     //Клик по кнопке вопросу №8
@@ -147,8 +186,11 @@ public class MainPage {
         driver.findElement(eighthImportantQuestion).click();
     }
     //Проверка раскрытия ответа вопроса №8
-    public void checkAreaStatusEighthImportantQuestion() {
-        driver.findElement(eighthImportantQuestion).getAttribute("aria-disabled");
+    public String checkAreaStatusEighthImportantQuestion() {
+       return driver.findElement(eighthImportantQuestion).getAttribute("aria-disabled");
     }
-
+    //Получить ответ на вопрос №8
+    public String getEighthImportantAnswerText() {
+        return driver.findElement(eighthImportantAnswer).getText();
+    }
 }
